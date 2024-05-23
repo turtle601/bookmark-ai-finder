@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "target": "ES6",
+    "module": "ESNext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ] /* 컴파일 과정에 사용될 라이브러리 파일 설정 */,
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "alwaysStrict": true
+  },
+  "exclude": ["node_modules"]
+}
