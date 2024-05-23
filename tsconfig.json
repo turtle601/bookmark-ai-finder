@@ -15,6 +15,7 @@
     "allowJs": true,
     "checkJs": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "moduleResolution": "Node",
     "sourceMap": true,
     "noImplicitAny": true,
