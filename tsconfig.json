@@ -23,5 +23,5 @@
     "strict": true,
     "alwaysStrict": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "webpack.config.js"]
 }

@@ -3,12 +3,14 @@
   "description": "BookMark Chrome Extension",
   "version": "1.0.0",
   "manifest_version": 3,
-  "action": {
-    "default_title": "BookMark Chrome Extension",
-    "default_popup": "popup.html"
-  },
   "permissions": ["tabs", "bookmarks"],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
 }
