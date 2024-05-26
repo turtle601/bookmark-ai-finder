@@ -2,10 +2,15 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    popup: path.resolve('src/popup/index.tsx'),
+    background: path.resolve('src/background/index.ts'),
+  },
   output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -39,9 +44,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: 'index.html',
+      title: 'BookMark Chrome Extensions',
+      filename: 'popup.html',
+      chunks: ['popup'],
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public/manifest.json', to: 'manifest.json' }],
+    }),
   ],
 };
