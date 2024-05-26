@@ -1,4 +1,6 @@
-import { FlexProps } from '@/components/@common/layout/Flex/type';
+import { css } from '@emotion/react';
+
+import type { FlexProps } from '@/components/@common/layout/Flex/type';
 
 export const getFlexStyle = ({
   direction,
@@ -7,7 +9,7 @@ export const getFlexStyle = ({
   gap,
   etcStyles,
 }: FlexProps) => {
-  return {
+  return css({
     display: 'flex',
     width: '100%',
     height: 'auto',
@@ -16,5 +18,5 @@ export const getFlexStyle = ({
     alignItems: align,
     gap: gap,
     ...etcStyles,
-  };
+  });
 };

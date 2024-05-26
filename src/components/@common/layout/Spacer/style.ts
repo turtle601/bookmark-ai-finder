@@ -1,3 +1,5 @@
+import { css } from '@emotion/react';
+
 import type {
   SpacerProps,
   SpacerType,
@@ -8,14 +10,14 @@ export const getSpacerStyle = <T extends SpacerType>({
   space,
 }: SpacerProps<T>) => {
   if (direction === 'vertical') {
-    return {
+    return css({
       width: '100%',
       height: `${space}`,
-    };
+    });
   }
 
-  return {
+  return css({
     width: `${space}`,
     height: 'auto',
-  };
+  });
 };
