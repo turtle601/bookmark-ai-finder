@@ -19,7 +19,7 @@ function Flex<T extends ElementType = 'div'>({
 
   return (
     <Element
-      style={getFlexStyle({
+      css={getFlexStyle({
         direction,
         justify,
         align,
