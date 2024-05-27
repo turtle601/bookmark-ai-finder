@@ -11,13 +11,20 @@ function Container<T extends ElementType = 'div'>({
   as,
   minWidth,
   maxWidth,
+  etcStyles,
   children,
   ...attribute
 }: PolymorpicProps<T, ContainerProps>) {
   const Element = as || 'div';
 
   return (
-    <Flex as={Element} direction="column" align="center" {...attribute}>
+    <Flex
+      as={Element}
+      direction="column"
+      align="center"
+      etcStyles={etcStyles}
+      {...attribute}
+    >
       {getChildrenForContainerStyle(children, minWidth, maxWidth)}
     </Flex>
   );
