@@ -2,7 +2,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.2"
   },
   "scripts": {
     "dev": "webpack serve --mode development",
