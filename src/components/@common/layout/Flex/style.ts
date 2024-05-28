@@ -11,8 +11,6 @@ export const getFlexStyle = ({
 }: FlexProps) => {
   return css({
     display: 'flex',
-    width: '100%',
-    height: 'auto',
     flexDirection: direction,
     justifyContent: justify,
     alignItems: align,
