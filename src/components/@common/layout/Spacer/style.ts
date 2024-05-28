@@ -11,13 +11,13 @@ export const getSpacerStyle = <T extends SpacerType>({
 }: SpacerProps<T>) => {
   if (direction === 'vertical') {
     return css({
-      width: '100%',
+      width: '1px',
       height: `${space}`,
     });
   }
 
   return css({
     width: `${space}`,
-    height: 'auto',
+    height: '1px',
   });
 };
