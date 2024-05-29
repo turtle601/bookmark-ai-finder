@@ -1,11 +1,10 @@
-import { color, spacer } from '@/styles/theme';
+import { color } from '@/styles/theme';
 
 import XIcon from '@/assets/x.svg';
 import Text from '@/components/@common/Text';
 
 import Flex from '@/components/@common/layout/Flex';
 import Center from '@/components/@common/layout/Center';
-import Spacer from '@/components/@common/layout/Spacer';
 
 import { getFaviconUrl } from '@/components/domain/bookmark/LinkBox/util';
 
@@ -22,28 +21,50 @@ function LinkBox({ url, title, size }: LinkBoxProps) {
   };
 
   return (
-    <Flex direction="column" align="center" onDoubleClick={openLink}>
-      {url ? (
-        <Center
-          etcStyles={{
-            width: `${size + 12}px`,
-            height: `${size + 12}px`,
-            backgroundColor: color.white,
-            borderRadius: '50%',
-          }}
-        >
-          <img
-            width={`${size}px`}
-            height={`${size}px`}
-            src={getFaviconUrl(url)}
-            alt={`${title}링크 아이콘`}
-          />
-        </Center>
-      ) : (
-        <XIcon />
-      )}
-      <Spacer direction="vertical" space={spacer.spacing2} />
-      <Text color={color.white} label={title} />
+    <Flex
+      direction="column"
+      align="center"
+      onDoubleClick={openLink}
+      etcStyles={{
+        width: '64px',
+      }}
+    >
+      <Center
+        etcStyles={{
+          width: '64px',
+          height: '64px',
+        }}
+      >
+        {url ? (
+          <Center
+            etcStyles={{
+              width: `${size + 12}px`,
+              height: `${size + 12}px`,
+              backgroundColor: color.white,
+              borderRadius: '50%',
+            }}
+          >
+            <img
+              width={`${size}px`}
+              height={`${size}px`}
+              src={getFaviconUrl(url)}
+              alt={`${title}링크 아이콘`}
+            />
+          </Center>
+        ) : (
+          <XIcon />
+        )}
+      </Center>
+      <Text
+        color={color.white}
+        label={title}
+        etcStyles={{
+          width: '64px',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      />
     </Flex>
   );
 }
