@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "permissions": ["tabs", "bookmarks"],
+  "action": {
+    "default_title": "BookMark",
+    "default_popup": "popup.html"
+  },
   "background": {
     "service_worker": "background.js"
   },
