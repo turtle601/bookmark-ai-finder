@@ -1,16 +1,10 @@
-import { css, jsx, SerializedStyles } from '@emotion/react';
-import {
-  Children,
-  CSSProperties,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import { css, jsx, SerializedStyles, CSSObject } from '@emotion/react';
+import { Children, isValidElement, ReactElement, ReactNode } from 'react';
 
 export const getChildrenForContainerStyle = (
   children: ReactElement[] | ReactNode,
-  minWidth?: CSSProperties['minWidth'],
-  maxWidth?: CSSProperties['maxWidth']
+  minWidth?: CSSObject['minWidth'],
+  maxWidth?: CSSObject['maxWidth']
 ) => {
   const styledChildren = Children.map(children, (child) => {
     if (!isValidElement<Record<'css', SerializedStyles>>(child)) {

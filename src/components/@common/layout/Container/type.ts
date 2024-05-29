@@ -1,6 +1,7 @@
-import { CSSProperties } from 'react';
+import { CSSObject } from '@emotion/react';
+
 export interface ContainerProps {
-  minWidth?: CSSProperties['minWidth'];
-  maxWidth?: CSSProperties['maxWidth'];
-  etcStyles?: CSSProperties;
+  minWidth?: CSSObject['minWidth'];
+  maxWidth?: CSSObject['maxWidth'];
+  etcStyles?: CSSObject;
 }
