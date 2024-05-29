@@ -1,19 +1,19 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 
 import Folder from '@/components/domain/bookmark/Folder';
 import LinkBox from '@/components/domain/bookmark/LinkBox';
 import Flex from '@/components/@common/layout/Flex';
+import Spacer from '@/components/@common/layout/Spacer';
+
+import { spacer } from '@/styles/theme';
+import { useBookmarkStore } from '@/store/bookmark';
 
 import {
   getBookmarksData,
   isLinkBox,
 } from '@/components/domain/bookmark/Bookmarks/util';
-
-import { useBookmarkStore } from '@/store/bookmark';
-import Text from '@/components/@common/Text';
-import { spacer } from '@/styles/theme';
-import Spacer from '@/components/@common/layout/Spacer';
+import Route from '@/components/domain/bookmark/Route';
 
 function Bookmarks() {
   const [bookmarks, setBookmarks] = useState<
@@ -26,18 +26,6 @@ function Bookmarks() {
     }))
   );
 
-  const folderPathTitle = useMemo(() => {
-    return path
-      .map((folder, idx) => {
-        if (idx === 0 && folder === '') {
-          return 'root';
-        }
-
-        return folder;
-      })
-      .join(' > ');
-  }, [path]);
-
   useEffect(() => {
     chrome.runtime.sendMessage(
       { action: 'getBookmarks' },
@@ -46,22 +34,15 @@ function Bookmarks() {
         setBookmarks(bookmarksData);
       }
     );
-  }, [path, getBookmarksData]);
+  });
 
   if (!bookmarks) return <div>등록한 북마크가 없습니다!!</div>;
 
   return (
     <div>
-      <Text
-        fontType="large4"
-        fontWeightType="semibold"
-        label={folderPathTitle}
-        etcStyles={{
-          padding: '1rem',
-        }}
-      />
+      <Route path={path} />
       <Spacer direction="vertical" space={spacer.spacing2} />
-      <Flex gap="24px">
+      <Flex gap={spacer.spacing4}>
         {bookmarks.map((bookmark) => {
           return (
             <>

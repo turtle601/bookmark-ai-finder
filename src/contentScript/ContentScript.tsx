@@ -1,8 +1,11 @@
-import Modal from '@/components/@common/Modal';
-import { useModalStore } from '@/store/modal';
 import { css } from '@emotion/react';
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
+
+import Modal from '@/components/@common/Modal';
+import Bookmarks from '@/components/domain/bookmark/Bookmarks';
+
+import { useModalStore } from '@/store/modal';
 
 function ContentScript() {
   const { isOpen, open, close } = useModalStore(
@@ -20,15 +23,7 @@ function ContentScript() {
         if (isOpen) {
           close();
         } else {
-          open(
-            <div
-              css={css({
-                color: 'white',
-              })}
-            >
-              안녕하세요
-            </div>
-          );
+          open(<Bookmarks />);
         }
       }
     };
