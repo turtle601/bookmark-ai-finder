@@ -3,7 +3,7 @@
   "description": "BookMark Chrome Extension",
   "version": "1.0.0",
   "manifest_version": 3,
-  "permissions": ["tabs", "bookmarks"],
+  "permissions": ["bookmarks"],
   "action": {
     "default_title": "BookMark",
     "default_popup": "popup.html"
