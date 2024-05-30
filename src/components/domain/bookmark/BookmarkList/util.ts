@@ -6,6 +6,8 @@ export const getBookmarksData = (
   title: string,
   bookMarkData: chrome.bookmarks.BookmarkTreeNode[]
 ) => {
+  if (bookMarkData.length === 0) return [];
+
   let queue = [bookMarkData[0]];
   let result: chrome.bookmarks.BookmarkTreeNode[] = [];
 

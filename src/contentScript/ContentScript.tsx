@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 
 import Modal from '@/components/@common/Modal';
-import Bookmarks from '@/components/domain/bookmark/Bookmarks';
+import Bookmarks from '@/components/domain/bookmark/BookmarkList';
 
 import { useModalStore } from '@/store/modal';
+import BookmarkWrapper from '@/components/domain/bookmark/BookmarkWrapper';
 
 function ContentScript() {
   const { isOpen, open, close } = useModalStore(
@@ -23,7 +24,7 @@ function ContentScript() {
         if (isOpen) {
           close();
         } else {
-          open(<Bookmarks />);
+          open(<BookmarkWrapper />);
         }
       }
     };
