@@ -1,12 +1,10 @@
-import { css } from '@emotion/react';
-import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 
 import Modal from '@/components/@common/Modal';
-import Bookmarks from '@/components/domain/bookmark/BookmarkList';
+import WindowCommand from '@/components/@shared/WindowCommand';
+import BookmarkWrapper from '@/components/domain/bookmark/BookmarkWrapper';
 
 import { useModalStore } from '@/store/modal';
-import BookmarkWrapper from '@/components/domain/bookmark/BookmarkWrapper';
 
 function ContentScript() {
   const { isOpen, open, close } = useModalStore(
@@ -17,26 +15,20 @@ function ContentScript() {
     }))
   );
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
-        e.preventDefault();
-        if (isOpen) {
-          close();
-        } else {
-          open(<BookmarkWrapper />);
-        }
-      }
-    };
+  const cmdAction = () => {
+    if (isOpen) {
+      close();
+      return;
+    }
 
-    window.addEventListener('keydown', handleKeyDown);
+    open(<BookmarkWrapper />);
+  };
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
-
-  return <Modal element={document.getElementById('modal') as HTMLElement} />;
+  return (
+    <WindowCommand cmdKeys={['ctrl', 'b']} action={cmdAction}>
+      <Modal element={document.getElementById('modal') as HTMLElement} />
+    </WindowCommand>
+  );
 }
 
 export default ContentScript;

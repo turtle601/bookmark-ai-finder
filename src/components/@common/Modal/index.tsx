@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useShallow } from 'zustand/react/shallow';
 
+import WindowCommand from '@/components/@shared/WindowCommand';
+
 import { useModalStore } from '@/store/modal';
 
 import {
@@ -30,25 +32,8 @@ function Modal({ element }: ModalProps) {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        close();
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
-
   return (
-    <>
+    <WindowCommand cmdKeys={['esc']} action={close}>
       {isOpen &&
         createPortal(
           <div css={getModalWrapperStyle()}>
@@ -57,7 +42,7 @@ function Modal({ element }: ModalProps) {
           </div>,
           element
         )}
-    </>
+    </WindowCommand>
   );
 }
 
