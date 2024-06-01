@@ -26,8 +26,10 @@ export const globalStyle = css({
   button: {
     backgroundColor: 'transparent',
     border: 'none',
-    outline: '0',
+    outline: 'none',
     cursor: 'pointer',
+    padding: 0,
+    margin: 0,
   },
 
   input: {
