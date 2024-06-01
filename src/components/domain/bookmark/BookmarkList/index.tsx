@@ -1,4 +1,4 @@
-import { MouseEventHandler, useRef } from 'react';
+import { useRef } from 'react';
 
 import Flex from '@/components/@common/layout/Flex';
 import Folder from '@/components/domain/bookmark/Folder';
@@ -13,34 +13,10 @@ import {
 } from '@/components/domain/bookmark/BookmarkList/util';
 
 import type { BookmarkListProps } from '@/components/domain/bookmark/BookmarkList/type';
-import { useRightClickContext } from '@/components/@shared/RightClick/context';
 
 function BookmarkList({ folder, data }: BookmarkListProps) {
   const triggerRefs = useRef<Record<string, HTMLButtonElement>>({});
   const bookmarksData = getBookmarksData(folder, data || []);
-
-  const { setMenuLocation, setSelectedId } = useRightClickContext();
-
-  const handleRightClick =
-    (idx: string): MouseEventHandler<HTMLButtonElement> =>
-    (event) => {
-      event.preventDefault();
-
-      const triggerRef = triggerRefs.current[idx];
-
-      if (triggerRef) {
-        setMenuLocation({
-          mouseX: event.clientX - triggerRef.getBoundingClientRect().left,
-          mouseY: event.clientY - triggerRef.getBoundingClientRect().top,
-        });
-
-        setSelectedId(idx);
-      }
-    };
-
-  if (bookmarksData.length === 0) {
-    return <div>등록한 북마크가 없습니다!!</div>;
-  }
 
   return (
     <Flex gap={spacer.spacing4}>
@@ -48,6 +24,7 @@ function BookmarkList({ folder, data }: BookmarkListProps) {
         return (
           <RightClick.Trigger
             key={bookmark.id}
+            id={bookmark.id}
             ref={(el: HTMLButtonElement) =>
               (triggerRefs.current[bookmark.id] = el)
             }
@@ -57,7 +34,6 @@ function BookmarkList({ folder, data }: BookmarkListProps) {
                 <RightClick.Item>bye</RightClick.Item>
               </RightClick.Menu>
             }
-            onContextMenu={handleRightClick(bookmark.id)}
           >
             {isLinkBox(bookmark) ? (
               <LinkBox url={bookmark.url} title={bookmark.title} size={32} />
