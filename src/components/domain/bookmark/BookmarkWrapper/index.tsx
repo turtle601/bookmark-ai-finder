@@ -8,6 +8,7 @@ import BookmarkList from '@/components/domain/bookmark/BookmarkList';
 import { spacer } from '@/styles/theme';
 import { useBookmarkStore } from '@/store/bookmark';
 import { sendMessageForChrome } from '@/utils/chrome';
+import RightClick from '@/components/@shared/RightClick';
 
 function BookmarkWrapper() {
   const { path } = useBookmarkStore(
@@ -23,13 +24,15 @@ function BookmarkWrapper() {
     <div>
       <Route path={path} />
       <Spacer direction="vertical" space={spacer.spacing2} />
-      <Fetch
-        promiseFn={getBookmarksData}
-        suspense="로딩중"
-        errorBoundary="에러 발생"
-      >
-        <BookmarkList folder={path[path.length - 1]} />
-      </Fetch>
+      <RightClick>
+        <Fetch
+          promiseFn={getBookmarksData}
+          suspense="로딩중"
+          errorBoundary="에러 발생"
+        >
+          <BookmarkList folder={path[path.length - 1]} />
+        </Fetch>
+      </RightClick>
     </div>
   );
 }
