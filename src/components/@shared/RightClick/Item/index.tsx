@@ -4,16 +4,20 @@ import { useRightClickContext } from '@/components/@shared/RightClick/context';
 
 import type { ItemProps } from '@/components/@shared/RightClick/Item/type';
 
-function Item({ children, onClick, etcStyles, ...attribute }: ItemProps) {
+function Item({ children, externalAction, etcStyles, ...attribute }: ItemProps) {
   const { setMenuLocation } = useRightClickContext();
 
   const handleClickItem = () => {
-    if (onClick) onClick();
+    if (externalAction) externalAction();
     setMenuLocation(null);
   };
 
   return (
-    <li onClick={handleClickItem} css={css({ ...etcStyles })} {...attribute}>
+    <li
+      css={css({ cursor: 'pointer', ...etcStyles })}
+      onClick={handleClickItem}
+      {...attribute}
+    >
       {children}
     </li>
   );

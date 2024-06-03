@@ -18,7 +18,7 @@ function Menu({
 
   const isShowMenu = useMemo(
     () => id === selectedId && !!menuLocation,
-    [selectedId, menuLocation]
+    [id, selectedId, menuLocation]
   );
 
   if (!isShowMenu) {
@@ -29,12 +29,14 @@ function Menu({
     <Flex
       as="ul"
       direction="column"
+      align="flex-start"
       gap={gap}
       etcStyles={{
         position: 'absolute',
         top: menuLocation?.mouseY,
         left: menuLocation?.mouseX,
         backgroundColor: color.white,
+        color: color.black,
         listStyleType: 'none',
         zIndex: 99999,
         ...etcStyles,
