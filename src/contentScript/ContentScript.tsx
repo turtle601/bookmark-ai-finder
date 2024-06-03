@@ -5,6 +5,7 @@ import WindowCommand from '@/components/@shared/WindowCommand';
 import BookmarkWrapper from '@/components/domain/bookmark/BookmarkWrapper';
 
 import { useModalStore } from '@/store/modal';
+import { QueryProvider } from '@/components/@shared/Query/context/Provider';
 
 function ContentScript() {
   const { isOpen, open, close } = useModalStore(
@@ -26,7 +27,9 @@ function ContentScript() {
 
   return (
     <WindowCommand cmdKeys={['ctrl', 'b']} action={cmdAction}>
-      <Modal element={document.getElementById('modal') as HTMLElement} />
+      <QueryProvider>
+        <Modal element={document.getElementById('modal') as HTMLElement} />
+      </QueryProvider>
     </WindowCommand>
   );
 }
