@@ -1,6 +1,6 @@
 import { useShallow } from 'zustand/react/shallow';
 
-import Fetch from '@/components/@shared/Fetch';
+import Fetch from '@/components/@shared/Query/Fetch';
 import Route from '@/components/domain/bookmark/Route';
 import Spacer from '@/components/@common/layout/Spacer';
 import BookmarkList from '@/components/domain/bookmark/BookmarkList';
@@ -18,7 +18,7 @@ function BookmarkWrapper() {
   );
 
   const getBookmarksData = (): Promise<chrome.bookmarks.BookmarkTreeNode[]> =>
-    sendMessageForChrome('getBookmarks');
+    sendMessageForChrome({ action: 'getBookmarks' });
 
   return (
     <div>
@@ -26,7 +26,8 @@ function BookmarkWrapper() {
       <Spacer direction="vertical" space={spacer.spacing2} />
       <RightClick>
         <Fetch
-          promiseFn={getBookmarksData}
+          queryKey="bookmarks"
+          queryFn={getBookmarksData}
           suspense="로딩중"
           errorBoundary="에러 발생"
         >
