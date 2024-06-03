@@ -7,3 +7,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'deleteBookmark') {
+    const bookmarkId = message.bookmarkId;
+
+    chrome.bookmarks.remove(bookmarkId, function () {
+      if (chrome.runtime.lastError) {
+        sendResponse({
+          success: false,
+          error: chrome.runtime.lastError.message,
+        });
+      } else {
+        sendResponse({ success: true });
+      }
+    });
+
+    return true;
+  }
+});
