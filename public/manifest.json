@@ -1,12 +1,11 @@
 {
-  "name": "BookMark-Extension",
-  "description": "BookMark Chrome Extension",
+  "name": "Bookmark Finder Extension",
   "version": "1.0.0",
+  "description": "Bookmark Finder Chrome Extension",
   "manifest_version": 3,
   "permissions": ["bookmarks"],
   "action": {
-    "default_title": "BookMark",
-    "default_popup": "popup.html"
+    "default_title": "BookMark"
   },
   "background": {
     "service_worker": "background.js"
