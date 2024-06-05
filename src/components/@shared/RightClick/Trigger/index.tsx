@@ -38,6 +38,9 @@ const Trigger = forwardRef<HTMLButtonElement, TriggerProps>(
       <button
         css={css({
           position: 'relative',
+          border: 'none',
+          background: 'none',
+          outline: 'none',
         })}
         ref={triggerRef}
         onContextMenu={handleRightClick(id)}
