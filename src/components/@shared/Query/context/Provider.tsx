@@ -10,7 +10,7 @@ import {
   reducer,
 } from '@/components/@shared/Query/context/store';
 
-export function QueryProvider({ children }: { children: React.ReactNode }) {
+function QueryProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initailState);
 
   return (
@@ -21,3 +21,5 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
     </QueryStateContext.Provider>
   );
 }
+
+export default QueryProvider;
