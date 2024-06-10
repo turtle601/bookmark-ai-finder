@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode } from 'react';
 
-type ModalContent = string | ReactNode | ReactElement[] | null;
+export type ModalContent = string | ReactNode | ReactElement[] | null;
 
-type ModalType = 'script' | 'trigger';
+export type ModalType = 'script' | 'trigger';
 
 export interface ModalProps {
   name: ModalType;

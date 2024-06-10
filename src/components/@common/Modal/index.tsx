@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import WindowCommand from '@/components/@shared/WindowCommand';
@@ -9,23 +9,34 @@ import {
   getModalWrapperStyle,
 } from '@/components/@common/Modal/style';
 
-import { useModalState } from '@/components/@common/Modal/context/hooks';
+import {
+  useModalDispatch,
+  useModalState,
+} from '@/components/@common/Modal/context/hooks';
+
 import { ModalProps } from '@/components/@common/Modal/type';
 
 function Modal({ name }: ModalProps) {
   const state = useModalState();
+  const dispatch = useModalDispatch();
   const { isOpen, content, zIndex } = state[name];
-
-  console.log(state);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     }
+
     return () => {
       document.body.style.removeProperty('overflow');
     };
   }, [isOpen]);
+
+  const close = useCallback(() => {
+    dispatch({
+      type: 'CLOSE_MODAL',
+      modalType: name,
+    });
+  }, []);
 
   return (
     <>

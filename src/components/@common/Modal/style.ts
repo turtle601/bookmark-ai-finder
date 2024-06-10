@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { color } from '@/styles/theme';
 
 export const getModalWrapperStyle = (zIndex: number) => {
   return css({
@@ -25,7 +24,6 @@ export const getModalOverlayStyle = (zIndex: number) => {
     width: '100%',
     height: '100%',
     backgroundColor: 'transparent',
-    opacity: 0.2,
   });
 };
 
@@ -35,13 +33,5 @@ export const getModalContentStyle = (zIndex: number) => {
     flexDirection: 'column',
     position: 'relative',
     zIndex: `${zIndex + 100}`,
-    width: '500px',
-    height: '300px',
-    minWidth: '400px',
-    maxWidth: '800px',
-    minHeight: '300px',
-    padding: '2rem',
-    borderRadius: '10px',
-    boxShadow: `inset 0 0 10px ${color.gray300}, 0 0 10px ${color.gray800}`,
   });
 };

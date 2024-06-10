@@ -9,6 +9,7 @@ import { spacer } from '@/styles/theme';
 import { useBookmarkStore } from '@/store/bookmark';
 import { sendMessageForChrome } from '@/utils/chrome';
 import RightClick from '@/components/@shared/RightClick';
+import { getBookmarkWrapperStyle } from '@/components/domain/bookmark/BookmarkWrapper/style';
 
 function BookmarkWrapper() {
   const { path } = useBookmarkStore(
@@ -21,7 +22,7 @@ function BookmarkWrapper() {
     sendMessageForChrome({ action: 'getBookmarks' });
 
   return (
-    <div>
+    <div css={getBookmarkWrapperStyle()}>
       <Route path={path} />
       <Spacer direction="vertical" space={spacer.spacing2} />
       <RightClick>
