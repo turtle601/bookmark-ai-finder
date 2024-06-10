@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { css } from '@emotion/react';
 
 import Flex from '@/components/@common/layout/Flex';
 import Folder from '@/components/domain/bookmark/Folder';
@@ -20,7 +21,11 @@ import type {
   MutationReturnType,
 } from '@/components/domain/bookmark/BookmarkList/type';
 
+import { useModalDispatch } from '@/components/@common/Modal/context/hooks';
+
 function BookmarkList({ folder, data }: BookmarkListProps) {
+  const dispatch = useModalDispatch();
+
   const triggerRefs = useRef<Record<string, HTMLButtonElement>>({});
   const bookmarksData = getBookmarksData(folder, data || []);
 
@@ -64,6 +69,25 @@ function BookmarkList({ folder, data }: BookmarkListProps) {
                     <Text label="삭제" />
                   </RightClick.Item>
                 </Mutation>
+                <div
+                  css={css({
+                    width: '100%',
+                    height: '2px',
+                    backgroundColor: 'black',
+                    margin: '0.2rem 0',
+                  })}
+                ></div>
+                <RightClick.Item
+                  externalAction={() => {
+                    dispatch({
+                      type: 'OPEN_MODAL',
+                      modalType: 'trigger',
+                      content: <div>hi</div>,
+                    });
+                  }}
+                >
+                  <Text label="이름 바꾸기" />
+                </RightClick.Item>
               </RightClick.Menu>
             }
           >
