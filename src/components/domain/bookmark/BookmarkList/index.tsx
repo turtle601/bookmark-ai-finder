@@ -22,6 +22,7 @@ import type {
 } from '@/components/domain/bookmark/BookmarkList/type';
 
 import { useModalDispatch } from '@/components/@common/Modal/context/hooks';
+import EditNameModal from '@/components/domain/modal/EditNameModal';
 
 function BookmarkList({ folder, data }: BookmarkListProps) {
   const dispatch = useModalDispatch();
@@ -82,7 +83,7 @@ function BookmarkList({ folder, data }: BookmarkListProps) {
                     dispatch({
                       type: 'OPEN_MODAL',
                       modalType: 'trigger',
-                      content: <div>hi</div>,
+                      content: <EditNameModal prevTitle={bookmark.title} />,
                     });
                   }}
                 >
