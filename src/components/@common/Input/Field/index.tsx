@@ -12,17 +12,18 @@ function Field(
   ref: Ref<HTMLInputElement>
 ) {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const { name, value, touched } = useInputContext();
+  const { name, value } = useInputContext();
   const { handleBlur, handleChange, handleFocus, validate } =
     useInputActionContext();
 
   useImperativeHandle(
     ref,
     (): any => ({
+      name,
+      value,
       focus: () => {
         inputRef.current?.focus();
       },
-
       checkValidity: () => {
         if (validate) {
           return validate(inputRef.current?.value ?? '');
@@ -30,7 +31,6 @@ function Field(
 
         return true;
       },
-
       scrollIntoView: () => {
         inputRef.current?.scrollIntoView();
       },
