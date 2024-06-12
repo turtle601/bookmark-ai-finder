@@ -26,11 +26,9 @@ export interface InputProps {
 
 export type InputRootProps = InputProps & {
   children:
-    | (
-        | ReactElement<typeof Label>
-        | ReactElement<typeof Field>
-        | ReactElement<typeof ErrorMessage>
-        | ReactElement
-      )[]
-    | ReactElement;
+    | ReactElement<typeof Field>
+    | ReactElement<typeof Label>
+    | ReactElement<typeof ErrorMessage>
+    | ReactElement
+    | ReactElement[];
 };
