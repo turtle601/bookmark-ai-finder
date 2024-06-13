@@ -1,4 +1,4 @@
-import { forwardRef, Ref, useImperativeHandle, useRef } from 'react';
+import { forwardRef, Ref, useEffect, useImperativeHandle, useRef } from 'react';
 
 import {
   useInputActionContext,
@@ -19,11 +19,10 @@ function Field(
   useImperativeHandle(
     ref,
     (): any => ({
-      name,
-      value,
       focus: () => {
         inputRef.current?.focus();
       },
+
       checkValidity: () => {
         if (validate) {
           return validate(inputRef.current?.value ?? '');
@@ -31,19 +30,36 @@ function Field(
 
         return true;
       },
+
       scrollIntoView: () => {
         inputRef.current?.scrollIntoView();
       },
+
+      get value() {
+        return inputRef.current?.value as string;
+      },
+
+      set value(newValue: string) {
+        if (inputRef.current) {
+          inputRef.current.value = newValue;
+        }
+      },
     }),
-    [inputRef]
+    [validate]
   );
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = value;
+    }
+  }, [value]);
 
   return (
     <input
       id={name}
+      value={value}
       type={as || 'text'}
       ref={inputRef}
-      value={value}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onChange={handleChange}
