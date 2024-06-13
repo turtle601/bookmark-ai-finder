@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { useQueryDispatch } from '@/components/@shared/Query/context/hooks';
 
@@ -20,10 +20,10 @@ export const useMutation = <T>({
     });
   };
 
-  const mutationData = async () => {
+  const mutationData = async (parameter?: any) => {
     setIsLoading(true);
     try {
-      const response = await mutationFn();
+      const response = await mutationFn(parameter);
       if (!response) throw new Error('데이터를 불러오지 못했습니다');
       setData(response);
       refetchQuerys();

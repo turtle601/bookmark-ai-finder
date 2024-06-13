@@ -1,3 +1,5 @@
+type MutationFnType<T> = () => Promise<T>;
+
 export interface QueryState {
   [key: string]: {
     data: any;
@@ -15,10 +17,10 @@ export type QueryAction =
 
 export interface QueryParameter<T> {
   queryKey: string;
-  queryFn: () => Promise<T>;
+  queryFn: MutationFnType<T>;
 }
 
 export interface MutationParameter<T> {
   queryKeys: string[];
-  mutationFn: () => Promise<T>;
+  mutationFn: (parameter?: any) => Promise<T>;
 }
