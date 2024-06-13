@@ -4,7 +4,7 @@ import { getChildrenForInputRef } from '@/components/@common/Form/util';
 
 import type { FormProps } from '@/components/@common/Form/type';
 
-function Form({ children, externalSubmitEvent, ...attribute }: FormProps) {
+function Form({ children, externalAction, ...attribute }: FormProps) {
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -21,7 +21,7 @@ function Form({ children, externalSubmitEvent, ...attribute }: FormProps) {
     });
 
     if (!focusFlag) {
-      if (externalSubmitEvent) externalSubmitEvent(inputRefs.current);
+      if (externalAction) externalAction(inputRefs.current);
     }
   };
 
