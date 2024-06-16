@@ -83,7 +83,12 @@ function BookmarkList({ folder, data }: BookmarkListProps) {
                     dispatch({
                       type: 'OPEN_MODAL',
                       modalType: 'trigger',
-                      content: <EditNameModal prevTitle={bookmark.title} />,
+                      content: (
+                        <EditNameModal
+                          id={bookmark.id}
+                          title={bookmark.title}
+                        />
+                      ),
                     });
                   }}
                 >

@@ -26,3 +26,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'updateBookmark') {
+    const { id, title } = message;
+
+    chrome.bookmarks.update(id, { title }, () => {
+      if (chrome.runtime.lastError) {
+        sendResponse({
+          success: false,
+          error: chrome.runtime.lastError.message,
+        });
+      } else {
+        sendResponse({ success: true });
+      }
+    });
+
+    return true;
+  }
+});

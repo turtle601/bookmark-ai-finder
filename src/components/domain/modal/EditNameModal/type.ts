@@ -1,3 +1,4 @@
 export interface EditNameModel {
-  prevTitle: string;
+  id: string;
+  title: string;
 }
