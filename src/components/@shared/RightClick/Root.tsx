@@ -1,13 +1,11 @@
 import { PropsWithChildren, useState } from 'react';
 import { RightClickContext } from '@/components/@shared/RightClick/context';
 
-import type { MenuLocationType } from '@/components/@shared/RightClick/type';
+import type { IMenuLocation } from '@/components/@shared/RightClick/type';
 
 function Root({ children }: PropsWithChildren) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [menuLocation, setMenuLocation] = useState<MenuLocationType | null>(
-    null,
-  );
+  const [menuLocation, setMenuLocation] = useState<IMenuLocation | null>(null);
 
   return (
     <RightClickContext.Provider

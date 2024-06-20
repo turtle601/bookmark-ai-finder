@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 
-export interface FetchProps<T> {
+export interface IFetchProps<T> {
   queryKey: string;
   queryFn: () => Promise<T>;
   suspense: ReactNode | string;

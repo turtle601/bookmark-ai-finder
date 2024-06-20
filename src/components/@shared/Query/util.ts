@@ -19,13 +19,13 @@ export const givePropsToChildren = <T>(
 };
 
 export const giveEventToChildren = (
-  action: (parameter?: any) => Promise<void>,
+  action: (parameter?: unknown) => Promise<void>,
   children: ReactElement[] | ReactNode,
 ) => {
   return Children.map(children, (child) => {
     if (
       isValidElement<{
-        externalAction: (parameter?: any) => Promise<void>;
+        externalAction: (parameter?: unknown) => Promise<void>;
       }>(child)
     ) {
       return cloneElement(child, { externalAction: action });

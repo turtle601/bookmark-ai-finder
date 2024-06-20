@@ -2,12 +2,12 @@ import { useState } from 'react';
 
 import { useQueryDispatch } from '@/components/@shared/Query/context/hooks';
 
-import type { MutationParameter } from '@/components/@shared/Query/type';
+import type { IMutationParameter } from '@/components/@shared/Query/type';
 
 export const useMutation = <T>({
   queryKeys,
   mutationFn,
-}: MutationParameter<T>) => {
+}: IMutationParameter<T>) => {
   const dispatch = useQueryDispatch();
 
   const [data, setData] = useState<T | null>(null);
@@ -20,7 +20,7 @@ export const useMutation = <T>({
     });
   };
 
-  const mutationData = async (parameter?: any) => {
+  const mutationData = async (parameter: unknown) => {
     setIsLoading(true);
     try {
       const response = await mutationFn(parameter);

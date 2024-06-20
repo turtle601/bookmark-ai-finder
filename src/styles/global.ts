@@ -1,7 +1,7 @@
 import { color } from '@/styles/theme';
-import { css } from '@emotion/react';
+import { SerializedStyles, css } from '@emotion/react';
 
-export const globalStyle = css({
+export const globalStyle: SerializedStyles = css({
   '*': {
     padding: 0,
     margin: 0,

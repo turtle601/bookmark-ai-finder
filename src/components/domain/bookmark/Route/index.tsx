@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { MouseEventHandler, useMemo } from 'react';
+import { MouseEventHandler } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 
 import Text from '@/components/@common/Text';
@@ -15,10 +15,10 @@ import {
   isRoot,
 } from '@/components/domain/bookmark/Route/util';
 
-import type { RouteProps } from '@/components/domain/bookmark/Route/type';
+import type { IRouteProps } from '@/components/domain/bookmark/Route/type';
 
-function Route({ path }: RouteProps) {
-  const folderPathList = useMemo(getFolderPath(path), [path]);
+function Route({ path }: IRouteProps) {
+  const folderPathList = getFolderPath(path);
 
   const { pickFolder } = useBookmarkStore(
     useShallow((state) => ({

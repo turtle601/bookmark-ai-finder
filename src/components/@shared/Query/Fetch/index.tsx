@@ -1,7 +1,7 @@
 import { useQuery } from '@/components/@shared/Query/hooks/useQuery';
 import { givePropsToChildren } from '@/components/@shared/Query/util';
 
-import type { FetchProps } from '@/components/@shared/Query/Fetch/type';
+import type { IFetchProps } from '@/components/@shared/Query/Fetch/type';
 
 function Fetch<T>({
   queryKey,
@@ -9,7 +9,7 @@ function Fetch<T>({
   suspense,
   errorBoundary,
   children,
-}: FetchProps<T>) {
+}: IFetchProps<T>) {
   const state = useQuery({ queryKey, queryFn });
 
   if (!state[queryKey]) return null;

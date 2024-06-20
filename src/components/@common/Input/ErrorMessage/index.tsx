@@ -1,9 +1,9 @@
 import { useInputContext } from '@/components/@common/Input/context/hooks';
 import { color } from '@/styles/theme';
 
-import type { ErrorMessageProps } from '@/components/@common/Input/ErrorMessage/type';
+import type { IErrorMessageProps } from '@/components/@common/Input/ErrorMessage/type';
 
-function ErrorMessage({ message, etcStyles = {} }: ErrorMessageProps) {
+function ErrorMessage({ message, etcStyles = {} }: IErrorMessageProps) {
   const { isError, touched } = useInputContext();
 
   if (!isError)

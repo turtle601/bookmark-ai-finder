@@ -1,7 +1,7 @@
 import { spacer } from '@/styles/theme';
 
 import Form from '@/components/@common/Form';
-import Input from '@/components/@common/Input';
+
 import Spacer from '@/components/@common/layout/Spacer';
 
 import {
@@ -12,22 +12,32 @@ import {
 } from '@/components/domain/modal/EditNameModal/style';
 
 import Mutation from '@/components/@shared/Query/Mutation';
+import Input from '@/components/@common/Input';
 
 import { sendMessageForChrome } from '@/utils/chrome';
 import { validateLinkName } from '@/components/domain/modal/EditNameModal/util';
 
-import type { MutationReturnType } from '@/components/domain/bookmark/BookmarkList/type';
-import type { EditNameModel } from '@/components/domain/modal/EditNameModal/type';
+import type { IEditNameModel } from '@/components/domain/modal/EditNameModal/type';
+import type { IFieldAttribute } from '@/components/@common/Input/Field/type';
 
-function EditNameModal({ id, title }: EditNameModel) {
+function EditNameModal({ id, title }: IEditNameModel) {
   const updateBookmarkTitle =
-    (bookmarkId: string) =>
-    async (elements: HTMLInputElement[]): Promise<MutationReturnType> => {
+    (bookmarkId: string) => async (parameter: unknown) => {
+      if (
+        !parameter ||
+        !Array.isArray(parameter) ||
+        !parameter.every((el) => el.value !== undefined)
+      ) {
+        throw new Error('elements 요소들은 반드시 value요소가 있어야한다.');
+      }
+
+      const fieldElements = parameter as IFieldAttribute[];
+
       return await sendMessageForChrome({
         action: 'updateBookmark',
         options: {
           id: bookmarkId,
-          title: elements[0].value,
+          title: fieldElements[0].value,
         },
       });
     };

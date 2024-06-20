@@ -2,9 +2,9 @@ import { FormEventHandler, useRef } from 'react';
 
 import { getChildrenForInputRef } from '@/components/@common/Form/util';
 
-import type { FormProps } from '@/components/@common/Form/type';
+import type { IFormProps } from '@/components/@common/Form/type';
 
-function Form({ children, externalAction, ...attribute }: FormProps) {
+function Form({ children, externalAction, ...attribute }: IFormProps) {
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -12,7 +12,7 @@ function Form({ children, externalAction, ...attribute }: FormProps) {
 
     let focusFlag = false;
 
-    Object.entries(inputRefs.current).forEach(([_, element]) => {
+    Object.entries(inputRefs.current).forEach(([, element]) => {
       if (!focusFlag && element.checkValidity()) {
         element.focus();
         element.scrollIntoView();

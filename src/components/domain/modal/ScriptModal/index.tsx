@@ -15,20 +15,26 @@ function ScriptModal() {
   const dispatch = useModalDispatch();
   const { script } = useModalState();
 
-  const open = (type: ModalType, content: ModalContent) => {
-    dispatch({
-      type: 'OPEN_MODAL',
-      modalType: type,
-      content,
-    });
-  };
+  const open = useCallback(
+    (type: ModalType, content: ModalContent) => {
+      dispatch({
+        type: 'OPEN_MODAL',
+        modalType: type,
+        content,
+      });
+    },
+    [dispatch],
+  );
 
-  const close = (type: ModalType) => {
-    dispatch({
-      type: 'CLOSE_MODAL',
-      modalType: type,
-    });
-  };
+  const close = useCallback(
+    (type: ModalType) => {
+      dispatch({
+        type: 'CLOSE_MODAL',
+        modalType: type,
+      });
+    },
+    [dispatch],
+  );
 
   const cmdAction = useCallback(() => {
     if (script.isOpen) {
@@ -37,7 +43,7 @@ function ScriptModal() {
     }
 
     open('script', <BookmarkWrapper />);
-  }, [script.isOpen]);
+  }, [close, open, script.isOpen]);
 
   return (
     <WindowCommand cmdKeys={['ctrl', 'b']} action={cmdAction}>

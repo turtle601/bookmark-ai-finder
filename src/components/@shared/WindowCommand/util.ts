@@ -11,7 +11,7 @@ export const getKeyMap = (event: KeyboardEvent) => {
 
   Array(26)
     .fill(0)
-    .forEach((_, i) => {
+    .forEach((value, i) => {
       const char = String.fromCharCode(97 + i);
       keyMap[char] = event.key.toLowerCase() === char;
     });

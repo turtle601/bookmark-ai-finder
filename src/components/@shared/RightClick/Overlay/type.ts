@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface OverlayProps {
+export interface IOverlayProps {
   children: ReactNode;
 }

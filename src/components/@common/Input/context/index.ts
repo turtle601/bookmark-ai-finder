@@ -1,11 +1,11 @@
-import { createContext } from 'react';
+import { Context, createContext } from 'react';
 
 import type {
-  InputActionContextProps,
-  InputContextProps,
+  IInputActionContextProps,
+  IInputContextProps,
 } from '@/components/@common/Input/type';
 
-export const InputContext = createContext<InputContextProps | null>(null);
-export const InputActionContext = createContext<InputActionContextProps | null>(
-  null,
-);
+export const InputContext: Context<IInputContextProps | null> =
+  createContext<IInputContextProps | null>(null);
+export const InputActionContext: Context<IInputActionContextProps | null> =
+  createContext<IInputActionContextProps | null>(null);

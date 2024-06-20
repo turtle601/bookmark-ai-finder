@@ -1,6 +1,6 @@
 import { CSSObject } from '@emotion/react';
 
-export interface CenterProps {
+export interface ICenterProps {
   direction?: CSSObject['flexDirection'];
   etcStyles?: CSSObject;
 }

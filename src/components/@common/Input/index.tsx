@@ -3,7 +3,9 @@ import Field from './Field';
 import ErrorMessage from './ErrorMessage';
 import Root from './Root';
 
-const Input = Object.assign(Root, {
+import type { IInput } from '@/components/@common/Input/type';
+
+const Input: IInput = Object.assign(Root, {
   Label,
   ErrorMessage,
   Field,

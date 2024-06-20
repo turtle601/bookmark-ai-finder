@@ -1,8 +1,8 @@
-import { createContext, Dispatch } from 'react';
+import { Context, createContext, Dispatch } from 'react';
 
-import { ModalAction, ModalState } from '@/components/@common/Modal/type';
+import { ModalAction, IModalState } from '@/components/@common/Modal/type';
 
-export const ModalStateContext = createContext<ModalState | null>(null);
-export const ModalDisPatchContext = createContext<Dispatch<ModalAction> | null>(
-  null,
-);
+export const ModalStateContext: Context<IModalState | null> =
+  createContext<IModalState | null>(null);
+export const ModalDisPatchContext: Context<Dispatch<ModalAction> | null> =
+  createContext<Dispatch<ModalAction> | null>(null);

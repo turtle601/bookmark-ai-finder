@@ -1,16 +1,20 @@
 import { forwardRef, Ref, useEffect, useImperativeHandle, useRef } from 'react';
-
 import {
   useInputActionContext,
   useInputContext,
 } from '@/components/@common/Input/context/hooks';
 
-import type { FieldProps } from '@/components/@common/Input/Field/type';
+import type {
+  IFieldProps,
+  IFieldAttribute,
+  IField,
+} from '@/components/@common/Input/Field/type';
 
-function Field(
-  { as = 'text', etcStyles = {}, ...attribute }: FieldProps,
-  ref: Ref<HTMLInputElement>,
-) {
+// 명명된 컴포넌트 정의
+const FieldComponent = (
+  { as = 'text', etcStyles = {}, ...attribute }: IFieldProps,
+  ref: Ref<IFieldAttribute>,
+) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { name, value } = useInputContext();
   const { handleBlur, handleChange, handleFocus, validate } =
@@ -18,27 +22,22 @@ function Field(
 
   useImperativeHandle(
     ref,
-    (): any => ({
+    (): IFieldAttribute => ({
       focus: () => {
         inputRef.current?.focus();
       },
-
       checkValidity: () => {
         if (validate) {
           return validate(inputRef.current?.value ?? '');
         }
-
         return true;
       },
-
       scrollIntoView: () => {
         inputRef.current?.scrollIntoView();
       },
-
       get value() {
         return inputRef.current?.value as string;
       },
-
       set value(newValue: string) {
         if (inputRef.current) {
           inputRef.current.value = newValue;
@@ -70,6 +69,8 @@ function Field(
       {...attribute}
     />
   );
-}
+};
 
-export default forwardRef(Field);
+const Field: IField = forwardRef(FieldComponent);
+
+export default Field;

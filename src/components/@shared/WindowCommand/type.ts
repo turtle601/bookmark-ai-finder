@@ -29,7 +29,7 @@ type AlphabetKeyType =
   | 'y'
   | 'z';
 
-export interface CommandProps {
+export interface ICommandProps {
   cmdKeys: (CmdKeyType | AlphabetKeyType)[];
   action: VoidFunction;
   children: ReactNode | ReactElement[];

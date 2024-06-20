@@ -1,13 +1,11 @@
 import { useCallback, useEffect } from 'react';
-
 import {
   useQueryDispatch,
   useQueryState,
 } from '@/components/@shared/Query/context/hooks';
+import type { IQueryParameter } from '@/components/@shared/Query/type';
 
-import type { QueryParameter } from '@/components/@shared/Query/type';
-
-export const useQuery = <T>({ queryKey, queryFn }: QueryParameter<T>) => {
+export const useQuery = <T>({ queryKey, queryFn }: IQueryParameter<T>) => {
   const state = useQueryState();
   const retry = state[queryKey]?.retryCount;
   const dispatch = useQueryDispatch();
@@ -15,17 +13,17 @@ export const useQuery = <T>({ queryKey, queryFn }: QueryParameter<T>) => {
   const setIsLoading = useCallback(
     (isLoading: boolean) =>
       dispatch({ type: 'SET_ISLOADING', queryKey, isLoading }),
-    [],
+    [dispatch, queryKey],
   );
 
   const setIsError = useCallback(
     (isError: boolean) => dispatch({ type: 'SET_ISERROR', queryKey, isError }),
-    [],
+    [dispatch, queryKey],
   );
 
   const setData = useCallback(
     (data: T) => dispatch({ type: 'SET_FETCH_DATA', queryKey, data }),
-    [],
+    [dispatch, queryKey],
   );
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export const useQuery = <T>({ queryKey, queryFn }: QueryParameter<T>) => {
     };
 
     fetchData();
-  }, [retry]);
+  }, [queryFn, retry, setData, setIsError, setIsLoading]);
 
   return state;
 };

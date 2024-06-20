@@ -1,15 +1,15 @@
 import { css } from '@emotion/react';
 
-import { useRightClickContext } from '@/components/@shared/RightClick/context';
+import { useRightClickContext } from '@/components/@shared/RightClick/context/hooks';
 
-import type { ItemProps } from '@/components/@shared/RightClick/Item/type';
+import type { IItemProps } from '@/components/@shared/RightClick/Item/type';
 
 function Item({
   children,
   externalAction,
   etcStyles,
   ...attribute
-}: ItemProps) {
+}: IItemProps) {
   const { setMenuLocation } = useRightClickContext();
 
   const handleClickItem = () => {

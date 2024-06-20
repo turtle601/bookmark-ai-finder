@@ -1,4 +1,4 @@
-export interface EditNameModel {
+export interface IEditNameModel {
   id: string;
   title: string;
 }

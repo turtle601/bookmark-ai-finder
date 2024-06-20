@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode } from 'react';
 
-export interface MutationProps<T> {
+export interface IMutationProps<T> {
   queryKeys: string[];
-  mutationFn: (parameter?: any) => Promise<T>;
+  mutationFn: (parameter?: unknown) => Promise<T>;
   suspense: ReactNode | string;
   errorBoundary: ReactNode | string;
   children: ReactElement[] | ReactNode;

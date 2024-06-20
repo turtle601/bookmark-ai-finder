@@ -14,9 +14,9 @@ import {
   useModalState,
 } from '@/components/@common/Modal/context/hooks';
 
-import { ModalProps } from '@/components/@common/Modal/type';
+import { IModalProps } from '@/components/@common/Modal/type';
 
-function Modal({ name }: ModalProps) {
+function Modal({ name }: IModalProps) {
   const state = useModalState();
   const dispatch = useModalDispatch();
   const { isOpen, content, zIndex } = state[name];
@@ -36,7 +36,7 @@ function Modal({ name }: ModalProps) {
       type: 'CLOSE_MODAL',
       modalType: name,
     });
-  }, []);
+  }, [dispatch, name]);
 
   return (
     <>

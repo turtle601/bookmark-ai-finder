@@ -1,11 +1,11 @@
 import { getSpacerStyle } from '@/components/@common/layout/Spacer/style';
 
 import type {
-  SpacerProps,
+  ISpacerProps,
   SpacerType,
 } from '@/components/@common/layout/Spacer/type';
 
-function Spacer<T extends SpacerType>({ direction, space }: SpacerProps<T>) {
+function Spacer<T extends SpacerType>({ direction, space }: ISpacerProps<T>) {
   return <div css={getSpacerStyle({ direction, space })}></div>;
 }
 

@@ -17,14 +17,14 @@ import {
 import { sendMessageForChrome } from '@/utils/chrome';
 
 import type {
-  BookmarkListProps,
+  IBookmarkListProps,
   MutationReturnType,
 } from '@/components/domain/bookmark/BookmarkList/type';
 
 import { useModalDispatch } from '@/components/@common/Modal/context/hooks';
 import EditNameModal from '@/components/domain/modal/EditNameModal';
 
-function BookmarkList({ folder, data }: BookmarkListProps) {
+function BookmarkList({ folder, data }: IBookmarkListProps) {
   const dispatch = useModalDispatch();
 
   const triggerRefs = useRef<Record<string, HTMLButtonElement>>({});

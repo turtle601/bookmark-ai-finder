@@ -2,7 +2,7 @@ import { ElementType } from 'react';
 
 import { getFlexStyle } from '@/components/@common/layout/Flex/style';
 
-import type { FlexProps } from '@/components/@common/layout/Flex/type';
+import type { IFlexProps } from '@/components/@common/layout/Flex/type';
 import type { PolymorpicProps } from '@/type/polymorpic';
 
 function Flex<T extends ElementType = 'div'>({
@@ -14,7 +14,7 @@ function Flex<T extends ElementType = 'div'>({
   etcStyles = {},
   children,
   ...attribute
-}: PolymorpicProps<T, FlexProps>) {
+}: PolymorpicProps<T, IFlexProps>) {
   const Element = as || 'div';
 
   return (

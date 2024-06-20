@@ -3,9 +3,9 @@ import { color } from '@/styles/theme';
 
 import Flex from '@/components/@common/layout/Flex';
 
-import { useRightClickContext } from '@/components/@shared/RightClick/context';
+import { useRightClickContext } from '@/components/@shared/RightClick/context/hooks';
 
-import type { MenuProps } from '@/components/@shared/RightClick/Menu/type';
+import type { IMenuProps } from '@/components/@shared/RightClick/Menu/type';
 
 function Menu({
   id,
@@ -13,7 +13,7 @@ function Menu({
   gap = '0px',
   etcStyles = {},
   ...attribute
-}: MenuProps) {
+}: IMenuProps) {
   const { selectedId, menuLocation } = useRightClickContext();
 
   const isShowMenu = useMemo(

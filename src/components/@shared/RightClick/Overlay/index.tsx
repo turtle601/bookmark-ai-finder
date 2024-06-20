@@ -1,10 +1,10 @@
-import { useRightClickContext } from '@/components/@shared/RightClick/context';
-
 import { getOverlayStyle } from '@/components/@shared/RightClick/Overlay/style';
 
-import type { OverlayProps } from '@/components/@shared/RightClick/Overlay/type';
+import { useRightClickContext } from '@/components/@shared/RightClick/context/hooks';
 
-function Overlay({ children }: OverlayProps) {
+import type { IOverlayProps } from '@/components/@shared/RightClick/Overlay/type';
+
+function Overlay({ children }: IOverlayProps) {
   const { setMenuLocation } = useRightClickContext();
 
   const closeMenu = () => {

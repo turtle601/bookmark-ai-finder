@@ -1,3 +1,3 @@
-export interface RouteProps {
+export interface IRouteProps {
   path: string[];
 }

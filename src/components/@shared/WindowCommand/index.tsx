@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 
 import { getKeyMap } from '@/components/@shared/WindowCommand/util';
 
-import type { CommandProps } from '@/components/@shared/WindowCommand/type';
+import type { ICommandProps } from '@/components/@shared/WindowCommand/type';
 
-function WindowCommand({ cmdKeys, action, children }: CommandProps) {
+function WindowCommand({ cmdKeys, action, children }: ICommandProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const keyMap = getKeyMap(event);

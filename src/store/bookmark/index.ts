@@ -1,23 +1,24 @@
-import { create } from 'zustand';
+import { StoreApi, UseBoundStore, create } from 'zustand';
 
-import type { BookmarkState } from '@/store/bookmark/type';
+import type { IBookmarkState } from '@/store/bookmark/type';
 
-export const useBookmarkStore = create<BookmarkState>((set) => ({
-  path: [''],
+export const useBookmarkStore: UseBoundStore<StoreApi<IBookmarkState>> =
+  create<IBookmarkState>((set) => ({
+    path: [''],
 
-  openFolder: (path) =>
-    set((state) => {
-      return {
-        path: [...state.path, path],
-      };
-    }),
+    openFolder: (path) =>
+      set((state) => {
+        return {
+          path: [...state.path, path],
+        };
+      }),
 
-  pickFolder: (path) =>
-    set((state) => {
-      const targetIdx = state.path.indexOf(path);
+    pickFolder: (path) =>
+      set((state) => {
+        const targetIdx = state.path.indexOf(path);
 
-      return {
-        path: state.path.slice(0, targetIdx + 1),
-      };
-    }),
-}));
+        return {
+          path: state.path.slice(0, targetIdx + 1),
+        };
+      }),
+  }));

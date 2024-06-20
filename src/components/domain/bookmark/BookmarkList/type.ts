@@ -1,4 +1,4 @@
-export interface BookmarkListProps {
+export interface IBookmarkListProps {
   folder: string;
   data?: chrome.bookmarks.BookmarkTreeNode[];
 }

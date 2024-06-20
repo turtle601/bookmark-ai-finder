@@ -1,15 +1,15 @@
 import { ChangeEventHandler, useState, useEffect } from 'react';
 
-import type { InputProps } from '@/components/@common/Input/type';
+import type { IInputProps } from '@/components/@common/Input/type';
 
-export const useInput = ({ inputName, inputValue, validate }: InputProps) => {
+export const useInput = ({ inputName, inputValue, validate }: IInputProps) => {
   const [value, setValue] = useState(inputValue);
   const [touched, setTouched] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (validate) setIsError(validate(value));
-  }, [value, isError]);
+  }, [value, isError, validate]);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);

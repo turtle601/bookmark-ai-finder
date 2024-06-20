@@ -5,7 +5,7 @@ import Flex from '@/components/@common/layout/Flex';
 import { getChildrenForContainerStyle } from '@/components/@common/layout/Container/utils';
 
 import type { PolymorpicProps } from '@/type/polymorpic';
-import type { ContainerProps } from '@/components/@common/layout/Container/type';
+import type { IContainerProps } from '@/components/@common/layout/Container/type';
 
 function Container<T extends ElementType = 'div'>({
   as,
@@ -14,7 +14,7 @@ function Container<T extends ElementType = 'div'>({
   etcStyles,
   children,
   ...attribute
-}: PolymorpicProps<T, ContainerProps>) {
+}: PolymorpicProps<T, IContainerProps>) {
   const Element = as || 'div';
 
   return (

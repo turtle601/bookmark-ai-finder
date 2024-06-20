@@ -1,7 +1,7 @@
 import { giveEventToChildren } from '@/components/@shared/Query/util';
 import { useMutation } from '@/components/@shared/Query/hooks/useMutation';
 
-import type { MutationProps } from '@/components/@shared/Query/Mutation/type';
+import type { IMutationProps } from '@/components/@shared/Query/Mutation/type';
 
 function Mutation<T>({
   queryKeys,
@@ -9,7 +9,7 @@ function Mutation<T>({
   suspense,
   errorBoundary,
   children,
-}: MutationProps<T>) {
+}: IMutationProps<T>) {
   const { isLoading, isError, mutationData } = useMutation({
     queryKeys,
     mutationFn,
