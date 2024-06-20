@@ -23,7 +23,7 @@ function Route({ path }: RouteProps) {
   const { pickFolder } = useBookmarkStore(
     useShallow((state) => ({
       pickFolder: state.pickFolder,
-    }))
+    })),
   );
 
   const selectFolder =

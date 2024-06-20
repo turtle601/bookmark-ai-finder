@@ -9,7 +9,7 @@ import type { FieldProps } from '@/components/@common/Input/Field/type';
 
 function Field(
   { as = 'text', etcStyles = {}, ...attribute }: FieldProps,
-  ref: Ref<HTMLInputElement>
+  ref: Ref<HTMLInputElement>,
 ) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { name, value } = useInputContext();
@@ -45,7 +45,7 @@ function Field(
         }
       },
     }),
-    [validate]
+    [validate],
   );
 
   useEffect(() => {

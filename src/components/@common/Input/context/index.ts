@@ -7,5 +7,5 @@ import type {
 
 export const InputContext = createContext<InputContextProps | null>(null);
 export const InputActionContext = createContext<InputActionContextProps | null>(
-  null
+  null,
 );

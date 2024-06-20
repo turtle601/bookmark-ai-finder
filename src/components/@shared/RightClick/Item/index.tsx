@@ -4,7 +4,12 @@ import { useRightClickContext } from '@/components/@shared/RightClick/context';
 
 import type { ItemProps } from '@/components/@shared/RightClick/Item/type';
 
-function Item({ children, externalAction, etcStyles, ...attribute }: ItemProps) {
+function Item({
+  children,
+  externalAction,
+  etcStyles,
+  ...attribute
+}: ItemProps) {
   const { setMenuLocation } = useRightClickContext();
 
   const handleClickItem = () => {

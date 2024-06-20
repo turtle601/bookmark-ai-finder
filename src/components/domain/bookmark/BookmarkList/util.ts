@@ -4,7 +4,7 @@ export const isLinkBox = (bookmark: chrome.bookmarks.BookmarkTreeNode) => {
 
 export const getBookmarksData = (
   title: string,
-  bookMarkData: chrome.bookmarks.BookmarkTreeNode[]
+  bookMarkData: chrome.bookmarks.BookmarkTreeNode[],
 ) => {
   if (bookMarkData.length === 0) return [];
 

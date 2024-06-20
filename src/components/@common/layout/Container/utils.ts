@@ -4,7 +4,7 @@ import { Children, isValidElement, ReactElement, ReactNode } from 'react';
 export const getChildrenForContainerStyle = (
   children: ReactElement[] | ReactNode,
   minWidth?: CSSObject['minWidth'],
-  maxWidth?: CSSObject['maxWidth']
+  maxWidth?: CSSObject['maxWidth'],
 ) => {
   const styledChildren = Children.map(children, (child) => {
     if (!isValidElement<Record<'css', SerializedStyles>>(child)) {

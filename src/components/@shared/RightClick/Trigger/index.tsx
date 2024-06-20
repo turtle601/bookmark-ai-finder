@@ -50,7 +50,7 @@ const Trigger = forwardRef<HTMLButtonElement, TriggerProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 export default Trigger;

@@ -8,7 +8,7 @@ import {
 
 export const givePropsToChildren = <T>(
   data: T,
-  children: ReactElement[] | ReactNode
+  children: ReactElement[] | ReactNode,
 ) => {
   return Children.map(children, (child) => {
     if (isValidElement<{ data: T }>(child)) {
@@ -20,7 +20,7 @@ export const givePropsToChildren = <T>(
 
 export const giveEventToChildren = (
   action: (parameter?: any) => Promise<void>,
-  children: ReactElement[] | ReactNode
+  children: ReactElement[] | ReactNode,
 ) => {
   return Children.map(children, (child) => {
     if (

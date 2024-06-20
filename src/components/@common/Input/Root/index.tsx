@@ -35,7 +35,7 @@ function Root({ inputName, inputValue, validate, children }: InputRootProps) {
       handleBlur,
       validate,
     }),
-    [handleChange, handleFocus, handleBlur, validate]
+    [handleChange, handleFocus, handleBlur, validate],
   );
 
   return (

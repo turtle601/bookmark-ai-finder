@@ -15,7 +15,7 @@ function BookmarkWrapper() {
   const { path } = useBookmarkStore(
     useShallow((state) => ({
       path: state.path,
-    }))
+    })),
   );
 
   const getBookmarksData = (): Promise<chrome.bookmarks.BookmarkTreeNode[]> =>

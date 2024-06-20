@@ -18,7 +18,7 @@ function Menu({
 
   const isShowMenu = useMemo(
     () => id === selectedId && !!menuLocation,
-    [id, selectedId, menuLocation]
+    [id, selectedId, menuLocation],
   );
 
   if (!isShowMenu) {

@@ -15,7 +15,7 @@ function Folder({ title }: FolderProps) {
   const { openFolder } = useBookmarkStore(
     useShallow((state) => ({
       openFolder: state.openFolder,
-    }))
+    })),
   );
 
   const viewFolderContent = () => {

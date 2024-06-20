@@ -48,7 +48,7 @@ function Modal({ name }: ModalProps) {
               <div css={getModalContentStyle(zIndex)}>{content}</div>
             </div>
           </WindowCommand>,
-          document.getElementById(name) as HTMLElement
+          document.getElementById(name) as HTMLElement,
         )}
     </>
   );

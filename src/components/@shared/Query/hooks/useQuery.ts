@@ -15,17 +15,17 @@ export const useQuery = <T>({ queryKey, queryFn }: QueryParameter<T>) => {
   const setIsLoading = useCallback(
     (isLoading: boolean) =>
       dispatch({ type: 'SET_ISLOADING', queryKey, isLoading }),
-    []
+    [],
   );
 
   const setIsError = useCallback(
     (isError: boolean) => dispatch({ type: 'SET_ISERROR', queryKey, isError }),
-    []
+    [],
   );
 
   const setData = useCallback(
     (data: T) => dispatch({ type: 'SET_FETCH_DATA', queryKey, data }),
-    []
+    [],
   );
 
   useEffect(() => {

@@ -14,7 +14,7 @@ const cloneElementWithRef = (
   props: React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  >
+  >,
 ) => {
   return cloneElement(element, props);
 };
@@ -22,7 +22,7 @@ const cloneElementWithRef = (
 const processChildren = (
   children: ReactNode | ReactElement[] | ReactNode[],
   refs: MutableRefObject<(HTMLInputElement | null)[]>,
-  refIdx = 0
+  refIdx = 0,
 ): ReactNode | ReactElement[] | ReactNode[] => {
   return Children.map(children, (child) => {
     if (!isValidElement(child)) return child;
@@ -40,7 +40,7 @@ const processChildren = (
       return cloneElement(
         child,
         {},
-        processChildren(child.props.children, refs, refIdx)
+        processChildren(child.props.children, refs, refIdx),
       );
     }
 
@@ -50,7 +50,7 @@ const processChildren = (
 
 export const getChildrenForInputRef = (
   children: ReactNode | ReactElement[],
-  refs: MutableRefObject<(HTMLInputElement | null)[]>
+  refs: MutableRefObject<(HTMLInputElement | null)[]>,
 ) => {
   return processChildren(children, refs);
 };
