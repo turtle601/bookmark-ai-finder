@@ -1,6 +1,5 @@
 import { Global } from '@emotion/react';
-
-import { globalStyle } from '@/shared/config/styles';
+import { globalStyle } from '@/shared/config/styles/global';
 
 const Provider = () => {
   return (
