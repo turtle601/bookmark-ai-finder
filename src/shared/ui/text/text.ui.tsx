@@ -1,7 +1,7 @@
 import { ElementType } from 'react';
-import { color, fontWeight, typography } from '@/shared/config/styles';
 
 import { getTextStyle } from '@/shared/ui/text/text.style';
+import { color, fontWeight, typography } from '@/shared/config/styles';
 
 import type { CSSObject } from '@emotion/react';
 import type { PolymorpicProps } from '@/shared/ui/util.type';
